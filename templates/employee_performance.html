@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>employee performance</title>
+</head>
+<style>
+body{
+    font-family: Courier New, monospace;
+    display: flex;
+    justify-content : center;
+    align-item:center;
+    min-height : 100vh;
+    background-color:#F5B041;
+	border-width:medium;
+	border-style: inset;
+	border-right-style: solid;
+	scroll-behavior: smooth;
+	background: linear-gradient(to left rgba(1,5,4,0.5));
+}
+.container
+{
+    opaque: 0.1;
+    position:relative;
+    width: 100%;
+    display :flex;
+    justify-content: center;
+    align-item : center;
+}
+.one{
+    font-size:20px;
+    text-align:center
+    padding: 0 4px;
+}
+.one :hover
+{
+    font-size: 15px;
+    text-align:center;
+    box-shadow: 10px 10px 10px 15px;
+}
+h1
+{
+  font-family: 'Courier New', monospace;
+    color: red;
+}
+p
+{
+  font-family: 'Aladin';font-size: 22px;
+}
+.container .ring
+{
+    position : relative ;
+    width :150 px ;
+    height :150px;
+    margin: 40px;
+    border-radius : 50%;
+    border: 4px  solid transparent;
+    border-top :4px  solid #24ecff;
+    animation : animate 4s linear infinite;
+}
+@keyframes  animate
+{
+    0%{
+        transform : rotate(0deg);
+        }
+    100%
+    {
+        transform : rotate(360deg);
+    }
+}
+.container .ring::before
+{
+       opaque: 0.1;
+    content: '';
+    position :absolute;
+    top : 12px;
+    right: 12px;
+    border-radius :50%;
+    width :15px;
+    height: 15px;
+    background : #24ecff;
+    box-shadow : 0 0 0 5px #24ecff33,
+    0 0 0 10px #24ecff22,
+    0 0 0 20px #24ecff11,
+    0 0 20px #24ecff,
+    0 0 20px #24ecff;
+}
+.container .ring:nth-child(3)
+{
+    position : absolute;
+    top: -66.66px;
+}
+input
+{
+  padding:10px;
+  border:0;
+  border-radius:10px;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+</style>
+<body id="myDIV">
+<form action="/772c12f279a2fa980ae7683933d070d0a7a6502f8a319b4503572ab819d25ba143e56aa9f77a14ee97217293736e194a" method="POST">
+    <div align="center" class="one">
+    <h1 align="center" class="one">Employee performance calculator</h1>
+    <p align="center" class="one" >This page helps in calculating the employee performance </p>
+        <p align="center"> 1. Job involvement 2.Feedbacks 3.experience 4.ticket solving management 5.on time delivery 6.environmental satisfaction 7.Psycho-Social Indicators 8.training time 9.Performance 10.Job satisfaction 11.project completion</p>
+        <div class="container">
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+        </div>
+    <br>
+       1-5 <input type="text" placeholder="Job involvement " name="jb_inv" align="center">
+    <br>
+       1-5 <input type="text" placeholder="feedbacks" name="feedback" align="center">
+    <br>
+       1-25 <input type="text" placeholder="experience" name="experience" align="center">
+    <br>
+       1-5 <input type="text" placeholder="tick_solving_mgmt" name="tick_solving_mgmt" align="center">
+    <br>
+       1-5 <input type="text" name="delivery" placeholder="on_time_delivery" align="center">
+    <br>
+       1-5 <input type="text" name="env_satis" placeholder="environmental_satisfaction" align="center">
+    <br>
+       1-5 <input type="text" name="psyco" placeholder="Psycho-Social Indicators" align="center">
+    <br>
+       1-6 <input type="text" name="train_time" placeholder="training time" align="center">
+    <br>
+       1-15 <input type="text" name="working_hrs" placeholder="working_hrs" align="center">
+    <br>
+       1-5 <input type="text" name="js" placeholder="job satisfaction" align="center">
+    <br>
+       1-20 <input type="text" name="project_completion" placeholder="projects completed" align="center">
+        <br><br>
+            <input type="submit" align="center">
+            <p>{{metrics}}</p>
+        </div>
+</form>
+</body>
+</html>
