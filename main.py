@@ -43,15 +43,12 @@ def pasd():
     if request.method=="POST":
         a=request.form["password"]
         if a == md5:
-            return redirect(url_for('home'))
+            return redirect(url_for('house'))
     return render_template('paswd.html',shai=sha1)
-@app.route('/home')
-def home():
-    return render_template('first.html')
 @app.route(f'/{sha1}')
 def passwd():
     return md5
-@app.route(f"/{strings}",methods=['GET','POST'])
+@app.route('/772c12f279a2fa980ae7683933d070d0a7a6502f8a319b4503572ab819d25ba143e56aa9f77a14ee97217293736e194a',methods=['GET','POST'])
 def house():
     if request.method=="POST":
         a1=request.form['jb_inv']
@@ -115,14 +112,17 @@ def house():
         x = data[['JobInvolvement','feedbacks','Experience','ticket','delivery','environment_satisfaction','social','TrainingTime','JobSatisfaction','work_hrs','project']]
         from sklearn.model_selection import train_test_split
         x_train, x_test, y_train, y_test = train_test_split(x, y)
-        model = Sequential()
+        '''model = Sequential()
         model.add(Dense(input_dim=data[['JobInvolvement','feedbacks','Experience','ticket','delivery','environment_satisfaction','social','TrainingTime','work_hrs','JobSatisfaction','project']].shape[1], units=x_train.shape[1], activation=keras.activations.relu))
         model.add(Dense(input_dim=data[['JobInvolvement','feedbacks','Experience','ticket','delivery','environment_satisfaction','social','TrainingTime','work_hrs','JobSatisfaction','project']].shape[1], units=x_train.shape[1], activation=keras.activations.relu))
         model.add(Dense(input_dim=data[['JobInvolvement','feedbacks','Experience','ticket','delivery','environment_satisfaction','social','TrainingTime','work_hrs','JobSatisfaction','project']].shape[1], units=x_train.shape[1], activation=keras.activations.relu))
         model.add(Dense(units=1, activation=keras.activations.relu))
         model.compile(optimizer='adam', loss=keras.losses.mean_absolute_error, metrics=['mae'])
         model.fit(x_train,y_train, batch_size=10, epochs=20)
-        pred = model.predict([[at_1,at_2,at_3,at_4,at_5,at_6,at_7,at_8,at_9,at_10,at_11]])
+        model.save('employee.h5')'''
+        from keras.models import load_model
+        models=load_model('employee.h5')
+        pred = models.predict([[at_1,at_2,at_3,at_4,at_5,at_6,at_7,at_8,at_9,at_10,at_11]])
         for i in pred:
             if i >7.5:
                 c=f'Employee is performing at his best---score:  {i}'
@@ -133,6 +133,6 @@ def house():
             elif i > 2.5 or i< 5.0:
                 g=f'Employee has a weaker performance---score:  {i} '
                 return render_template('final.html',metric=g)
-        return render_template('employee_performance.html',shai=sha1)
+    return render_template('employee_performance.html',shai=sha1)
 if __name__=='__main__':
     app.run()
